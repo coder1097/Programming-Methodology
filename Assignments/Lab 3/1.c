@@ -26,4 +26,3 @@ void printSumEvens(int n){
 		sum += i;
 	printf("Sum = %d",sum);
 }
-
