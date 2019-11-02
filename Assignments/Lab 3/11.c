@@ -6,18 +6,17 @@ void output(int,int);
 
 int main(){
 	int n;
-	int *n_ptr = &n;
 
-	getInput(n_ptr);
+	getInput(&n);
 	int isPalindrome = checkPalindrome(n);
 	output(n, isPalindrome);
 }
 
-void getInput(int *n_ptr){
+void getInput(int *n){
 	do{
 		printf("Enter n: ");
-		scanf("%d",n_ptr);
-	}while(*n_ptr <= 0);
+		scanf("%d",n);
+	}while(*n <= 0);
 }
 
 int checkPalindrome(int n){

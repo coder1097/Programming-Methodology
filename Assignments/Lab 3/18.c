@@ -7,19 +7,18 @@ void convertDECtoBIN(int,int);
 
 int main(){
 	int n,cNum;
-	int *n_ptr = &n;
 
-	getInput(n_ptr);
+	getInput(&n);
 	cNum = findClosetNum(n);		
 	convertDECtoBIN(n, cNum);
 
 }
 
-void getInput(int *n_ptr){
+void getInput(int *n){
 	do{
 		printf("Enter n: ");
-		scanf("%d",n_ptr);
-	}while(*n_ptr <= 0);
+		scanf("%d",n);
+	}while(*n <= 0);
 }
 
 int findClosetNum(int n){

@@ -6,24 +6,23 @@ void print(int);
 
 int main(){
 	int n;
-	int *n_ptr = &n;
 	
-	getInput(n_ptr);
-	swapFALDigits(n_ptr);
+	getInput(&n);
+	swapFALDigits(&n);
 	print(n);
 }
 
-void getInput(int *n_ptr){
+void getInput(int *n){
 	do{
 		printf("Enter n: ");
-		scanf("%d",n_ptr);
-	}while(*n_ptr < 10);
+		scanf("%d",n);
+	}while(*n < 10);
 }
 
-void swapFALDigits(int *n_ptr){
+void swapFALDigits(int *n){
 	int fDig,lDig,cout=0,tmp,mul=1;
 	
-	tmp = *n_ptr;
+	tmp = *n;
 
 	lDig = tmp%10;
 	
@@ -40,7 +39,7 @@ void swapFALDigits(int *n_ptr){
 		cout--;
 	}
 
-	*n_ptr = *n_ptr-fDig*mul+lDig*mul-lDig+fDig;
+	*n = *n-fDig*mul+lDig*mul-lDig+fDig;
 }
 
 void print(int n){
