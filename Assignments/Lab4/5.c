@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 void inputArray(int [], int *);
-int calculateSum(int [], int);
+int sumNeg(int [], int);
 
 int main(){
 	int n;
 	int a[100] = {0};
 	
 	inputArray(a,&n);
-	printf("Sum: %d", calculateSum(a,n));
+	printf("Sum: %d", sumNeg(a,n));
 }
 
 void inputArray(int a[], int *n){
@@ -23,7 +23,7 @@ void inputArray(int a[], int *n){
 	}
 }
 
-int calculateSum(int a[], int n){
+int sumNeg(int a[], int n){
 	int sum=0;
 	
 	for(int i=0; i<n; i++){
