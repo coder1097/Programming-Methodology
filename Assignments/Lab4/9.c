@@ -2,38 +2,59 @@
 
 void inputArray(int [], int *);
 int countDuplicateElements(int [], int);
+void sort(int [],int);
 
 int main(){
-	int n;
 	int a[100] = {0};
+	int size;
 
-	inputArray(a,&n);
-	printf("No of duplicate elements: %d", countDuplicateElements(a,n));
+	inputArray(a,&size);
+	printf("No of duplicate elements: %d", countDuplicateElements(a,size));
 }
 
-void inputArray(int a[], int *n){
+void inputArray(int a[], int *size){
 	do{
-		printf("Enter n: ");
-		scanf("%d",n);
-	}while(*n < 2);
+		printf("Enter size: ");
+		scanf("%d",size);
+	}while(*size <= 1);
 
 	printf("Input elements: ");
-	for(int i=0; i < *n; i++){
+	for(int i=0; i < *size; i++){
 		scanf("%d",&a[i]);
 	}
 }
 
-int countDuplicateElements(int a[], int n){
-	int cout=0;
+int countDuplicateElements(int a[], int size){
+	sort(a,size);
 
-	for(int i=0; i<n-1; i++){
-		for(int j=i+1;j<n; j++){
-			if(a[i] == a[j]){
-				cout++;
-				break;
-			}
+	int cout=0, n=size-1;
+	for(int i=0; i<n; i++){
+		if(a[i] == a[i+1]){
+			if(i+2 > n) cout++;
+			else
+				if(a[i+1] != a[i+2]) cout++;
 		}
 	}
 
 	return cout;
 }
+
+void sort(int arr[], int n)  
+{  
+    int i, key, j;  
+    for (i = 1; i < n; i++) 
+    {  
+        key = arr[i];  
+        j = i - 1;  
+  
+        /* Move elements of arr[0..i-1], that are  
+        greater than key, to one position ahead  
+        of their current position */
+        while (j >= 0 && arr[j] > key) 
+        {  
+            arr[j + 1] = arr[j];  
+            j = j - 1;  
+        }  
+        arr[j + 1] = key;  
+    }  
+}  
