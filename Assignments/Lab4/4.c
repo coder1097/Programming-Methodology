@@ -2,40 +2,44 @@
 #include <stdlib.h>
 #include <time.h>
 
-void inputArray(int [],int *);
+void readInputs(int [],int);
+long int sum(int [],int);
 void printArray(int [],int);
-long int sumArray(int [],int);
 
 int main(){
-	int a[100];
-	int n;
+	int a[100] = {0};
+	int nElements;
+	
+	do{
+		printf("Number of elements: ");
+		scanf("%d", &nElements);
+	}while(nElements < 1);
 
-	inputArray(a,&n);
-	printArray(a,n);
-	printf("Sum: %ld", sumArray(a,n));
+	readInputs(a,nElements);
+	printArray(a,nElements);
+	printf("Sum: %ld", sum(a,nElements));
+	
 }
 
-void inputArray(int a[], int *size){
-	do{
-		printf("Enter size: ");
-		scanf("%d",size);
-	}while(*size < 1);
+void readInputs(int a[], int nElements){
 
 	srand(time(NULL));
-	for(int i=0; i<*size;i++)
-		a[i] = rand();
+	for(int i=0; i<nElements; i++)
+		a[i] = rand()%1001;	
 }
 
-void printArray(int a[], int size){
-	for(int i=0; i<size; i++)
-		printf("%d\n",a[i]);
-}
-
-long int sumArray(int a[], int size){
+long int sum(int a[], int nElements){
 	long int sum=0;
 
-	for(int i=0;i<size;i++)
+	for(int i=0; i<nElements; i++)
 		sum += a[i];
-
+	
 	return sum;
+}
+
+void printArray(int a[], int nElements){
+	printf("Array:");
+	for(int i=0; i<nElements; i++)
+		printf(" %d ", a[i]);
+	printf("\n");
 }

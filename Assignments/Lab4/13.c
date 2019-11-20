@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void inputArray(int [], int *);
+void getInputs(int [], int);
 void split(int [], int [], int [],int,int *,int *);
 void printArray(int [], int [], int,int);
 
@@ -11,19 +11,18 @@ int main(){
 	int a[100],even[100],odd[100];
 	int size,even_size,odd_size;
 
-	inputArray(a,&size);
+	printf("Enter size: ");
+	scanf("%d",&size);
+	
+	getInputs(a,size);
 	split(a,even,odd,size,&even_size,&odd_size);
 	printArray(even,odd,even_size,odd_size);
 }
 
-void inputArray(int a[], int *size){
-	do{
-		printf("Enter size: ");
-		scanf("%d",size);
-	}while(*size <= 1);
-
+void getInputs(int a[], int size){
+	
 	srand(time(NULL));
-	for(int i=0; i<*size;i++)
+	for(int i=0; i<size;i++)
 		a[i] = rand()%1001;
 }
 

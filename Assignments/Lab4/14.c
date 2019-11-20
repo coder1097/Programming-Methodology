@@ -2,26 +2,25 @@
 #include <stdlib.h>
 #include <time.h>
 
-void inputArray(int [], int *);
+void getInputs(int [], int);
 int search(int [],int);
 
 int main(){
-	int a[100];
+	int a[100]={0};
 	int size;
 
-	inputArray(a,&size);
+	printf("Enter size: ");
+	scanf("%d",&size);
+	
+	getInputs(a,size);
 	printf("Output: %d",search(a,size));
 	
 }
 
-void inputArray(int a[], int *size){
-	do{
-		printf("Enter size: ");
-		scanf("%d",size);
-	}while(*size <= 1);
+void getInputs(int a[], int size){
 
 	srand(time(NULL));
-	for(int i=0; i<*size;i++)
+	for(int i=0; i<size;i++)
 		a[i] = rand()%1001;
 }
 

@@ -1,52 +1,53 @@
 #include <stdio.h>
 
-void inputArray(int [],int *);
+void getInputs(int [],int);
 void deleteArray(int [],int *);
 void printArray(int [],int);
 
 int main(){
-	int n;
 	int a[100] = {0};
+	int nElements;
 	
-	inputArray(a,&n);
-	deleteArray(a,&n);
-	printArray(a,n);
+	do{
+		printf("Number of elements: ");
+		scanf("%d",&nElements);
+	}while(nElements < 1);
+
+	getInputs(a,nElements);
+	deleteArray(a,&nElements);
+	printArray(a,nElements);
 }
 
-void inputArray(int a[], int *n){
-	do{
-		printf("Enter n: ");
-		scanf("%d",n);
-	}while(*n < 1);
-
+void getInputs(int a[], int nElements){
+	
 	printf("Input elements: ");
-	for(int i=0 ; i<*n; i++){
+	for(int i=0 ; i<nElements; i++){
 		scanf("%d",&a[i]);
 	}
 	
 }
 
-void deleteArray(int a[], int *n){
+void deleteArray(int a[], int *nElements){
 	int pos;
 	
-	printf("Enter position: ");
+	printf("Enter position y want to delete: ");
 	scanf("%d", &pos);
 	
-	if(pos > *n){
+	if(pos > *nElements){
 		printf("Index out of bound");
 		return;
 	}else{
-		*n -= 1;
+		*nElements -= 1;
 	} 
 	
-	for(int i=pos-1; i <= *n; i++){
+	for(int i=pos-1; i <= *nElements; i++){
 		a[i] = a[i+1];
 	}		
 }
 
-void printArray(int a[], int n){
+void printArray(int a[], int nElements){
 	printf("Output: ");
-	for(int i=0; i<n; i++){
+	for(int i=0; i<nElements; i++){
 		printf(" %d ",a[i]);
 	}
 }

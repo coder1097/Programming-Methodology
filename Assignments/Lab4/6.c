@@ -2,38 +2,42 @@
 #include <stdlib.h>
 #include <time.h>
 
-void inputArray(int [],int *);
+void getInputs(int [],int);
 void printArray(int [],int);
 long int sumEven(int [],int);
 
 int main(){
-	int a[100];
-	int size;
+	int a[100] = {0};
+	int nElements;
 
-	inputArray(a,&size);
-	printArray(a,size);
-	sumEven(a,size);
-}
-
-void inputArray(int a[], int *size){
 	do{
-		printf("Enter size: ");
-		scanf("%d",size);
-	}while(*size < 1);
+		printf("Number of elements: ");
+		scanf("%d",&nElements);
+	}while(nElements < 1);
 
+	getInputs(a,nElements);
+	printArray(a,nElements);
+	printf("Sum: %ld",sumEven(a,nElements));
+}
+
+void getInputs(int a[], int nElements){
+	
 	srand(time(NULL));
-	for(int i=0;i<*size;i++)
-		a[i] = rand();
+	for(int i=0;i<nElements;i++)
+		a[i] = rand()%1001;
 }
 
-void printArray(int a[], int size){
-	for(int i=0;i<size;i++)
-		printf("%d\n",a[i]);
+void printArray(int a[], int nElements){
+	printf("Array:");
+	for(int i=0;i<nElements;i++)
+		printf(" %d ",a[i]);
+	printf("\n");
 }
-long int sumEven(int a[],int size){
+
+long int sumEven(int a[],int nElements){
 	long int sum=0;
 
-	for(int i=0; i<size;i++){
+	for(int i=0; i<nElements;i++){
 		if(a[i] % 2 == 0) sum += a[i];
 	}
 

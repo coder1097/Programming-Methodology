@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void inputArray(int [], int *);
+void getInputs(int [], int);
 void countFrequency(int [],int,int [],int [], int *);
 int count(int [],int,int);
 void output(int [], int [],int);
@@ -10,18 +10,17 @@ int main(){
 	int a[100], distinct[100], frequency[100];
 	int size, distinct_size;
 
-	inputArray(a,&size);
+	printf("Number of elements: ");
+	scanf("%d",&size);
+	
+	getInputs(a,size);
 	countFrequency(a,size,distinct,frequency,&distinct_size);	
 	output(distinct,frequency,distinct_size);
 }
 
-void inputArray(int a[], int *size){
-	do{
-		printf("Enter size: ");
-		scanf("%d",size);
-	}while(*size <= 1);
+void getInputs(int a[], int size){
 
-	for(int i=0; i<*size;i++)
+	for(int i=0; i<size;i++)
 		scanf("%d",&a[i]);
 }
 
@@ -65,9 +64,9 @@ void output(int distinct[], int frequency[], int size){
 	}	
 }
 
-void sort(int a[], int n){
+void sort(int a[], int size){
 	int i, key, j;  
-    for (i = 1; i < n; i++) 
+    for (i = 1; i < size; i++) 
     {  
         key = a[i];  
         j = i - 1;  

@@ -1,32 +1,33 @@
 #include <stdio.h>
 
-void inputArray(int [], int *);
+void getInputs(int [], int);
 int sumNeg(int [], int);
 
 int main(){
-	int n;
 	int a[100] = {0};
+	int nElements;
 	
-	inputArray(a,&n);
-	printf("Sum: %d", sumNeg(a,n));
+	do{
+		printf("Number of elements: ");
+		scanf("%d",&nElements);
+	}while(nElements < 1);
+
+	getInputs(a,nElements);
+	printf("Sum: %d", sumNeg(a,nElements));
 }
 
-void inputArray(int a[], int *n){
-	do{
-		printf("Enter n: ");
-		scanf("%d",n);
-	}while(*n < 1);
+void getInputs(int a[], int nElements){
 	
 	printf("Input elements: ");
-	for(int i=0; i<*n; i++){
+	for(int i=0; i<nElements; i++){
 		scanf("%d", &a[i]);
 	}
 }
 
-int sumNeg(int a[], int n){
+int sumNeg(int a[], int nElements){
 	int sum=0;
 	
-	for(int i=0; i<n; i++){
+	for(int i=0; i<nElements; i++){
 		if(a[i] > 0) continue;
 		sum += a[i];
 	}
