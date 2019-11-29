@@ -34,12 +34,7 @@ int length(char s[]){
 }
 
 void concat(char s1[], char s2[], int s1_len, int s2_len){
-	int i;
-
-	if(s1[s1_len-2] == '\n')
-		i = s1_len-2;
-	else
-		i = s1_len-1;
+	int i=s1_len-2;
 	
 	for(int j=0; j<s2_len; j++)
 		s1[i++]=s2[j];

@@ -9,7 +9,7 @@ int main(){
 	
 	int len=0;
 	while(1){
-		if(s[len] == '\0'){
+		if(s[len] == '\n'){
 			len++;
 			break;
 		}
